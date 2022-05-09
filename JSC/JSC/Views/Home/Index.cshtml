@@ -1,0 +1,77 @@
+﻿@{
+    ViewBag.Title = "Home Page";
+}
+
+
+<div class="row">
+    <div class="col-md-3">
+        <label>
+            <input type="radio" name="click" onclick="stop()"/>
+            A
+        </label>
+    </div>
+    <div class="col-md-3">
+        <label>
+            <input type="radio" name="click"onclick="stop()"/>
+            B
+        </label>
+    </div>
+    <div class="col-md-3">
+        <label>
+            <input type="radio" name="click"onclick="stop()"/>
+            C
+        </label>
+    </div>
+    <div class="col-md-3">
+        <label>
+            <input type="radio" name="click"onclick="stop()"/>
+            D
+        </label>
+    </div>
+</div>
+<div>
+    <input type="button" value="Start" onclick="start()" />
+    <input type="button" value="Stop" onclick="stop()" />  <br /> <br />
+</div>
+
+<div>
+    <span  id="s" >Second</span>
+</div>
+<div >
+   <span id="a">S</span>
+</div>
+<style>
+    span {
+        border: solid 1px #ACACAC;
+        padding: 2px;
+    }
+</style>
+<script language="javascript">
+        var s = 20; // Giây
+        var a = 0;
+
+    var timeout = null; // Timeout
+
+    function start() {
+
+        if (s == -1) {
+            clearTimeout(timeout);
+            return false;
+        }
+
+        /*BƯỚC 1: HIỂN THỊ ĐỒNG HỒ*/
+        document.getElementById('s').innerText = s.toString();
+        a = parseHTML(document.getElementById('s')); 
+        /*BƯỚC 1: GIẢM PHÚT XUỐNG 1 GIÂY VÀ GỌI LẠI SAU 1 GIÂY */
+        timeout = setTimeout(function () {
+            s--;
+            start();
+        }, 1000);
+    }
+    function stop() {
+        clearTimeout(timeout);
+        document.getElementById('a').innerText = a.toString();
+       
+    }
+    
+</script>
